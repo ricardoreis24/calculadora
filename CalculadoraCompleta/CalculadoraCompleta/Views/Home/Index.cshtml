@@ -1,110 +1,114 @@
 ﻿
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Calculadora</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>Calculadora</title>
+	<style>
+		body {
+			background: #1a1a1c;
+		}
+
+		#tabela {
+			border: 2px solid white;
+			width: 20%;
+			border-spacing: 10px;
+		}
+
+		h1 {
+			font-size: 25px;
+			font-family: Verdana;
+			color: white;
+		}
+	</style>
+	<script>
+	</script>
 </head>
 <body>
-<div>
-    <h1>Calculadora Completa</h1>
-    <!-- objeto para devolver o conteudo da calculadora do browser para o servidor-->
-    <!-- esta linha de comentario é vista no browser-->
-    @*esta já não*@
-    
-    <form method="post">
-        <table>
-            <tr>
-                <td rowspan="5">
-                    <input type="text" name="visor" value="0" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="7" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="8" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="9" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value=":" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="+/-" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="4" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="5" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="6" name="bt" />
-                </td>
-            
-            
-                <td>
-                    <input type="submit" value="*" name="bt" />
-                </td>
-            
-            <tr>
-                <td>
-                    <input type="submit" value="C" name="bt" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="1" name="bt" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="2" name="bt" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="3" name="bt" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="-" name="bt" />
-                </td>
-            </tr>
-            <tr>
-                <td rowspan="2">
-                    <input type="submit" value="=" name="bt" />
-                </td>
-                <td>
+	<div>
+		<h1> Calculadora mais completa </h1>
 
-                </td>
-            </tr>
+		<!-- objeto para devolver o conteúdo da calculadora
+			 do browser para o servidor. -->
+		<!-- esta linha de comentário é vista no browser -->
+		@*    mas esta não é...   *@
+		<form method="POST">
 
-        </table>
-    </form>
-</div>
+			<table id="tabela">
+				<tr>
+					<td colspan="5" align='center'>
+						<input type="text" name="visor" value="@ViewBag.Visor" style="width:100%" text-align="right" ; readonly />
+					</td>
+				</tr>
+				<tr>
+					<td align='center'>
+						<input type="submit" value="7" name="bt" style="width:100%" />
+					</td>
+					<td>
+						<input type="submit" value="8" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="9" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value=":" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="+/-" name="bt" style="width:100%" />
+					</td>
+				</tr>
+				<tr>
+					<td align='center'>
+						<input type="submit" value="4" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="5" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="6" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="x" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="C" name="bt" style="width:100%" />
+					</td>
+				</tr>
+				<tr>
+					<td align='center'>
+						<input type="submit" value="1" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="2" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="3" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="-" name="bt" style="width:100%" />
+					</td>
+					<td align='center' rowspan="2">
+						<input type="submit" value="=" name="bt" style="width:100%" />
+					</td>
+				</tr>
+				<tr>
+					<td align='center' colspan="2">
+						<input type="submit" value="0" name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="," name="bt" style="width:100%" />
+					</td>
+					<td align='center'>
+						<input type="submit" value="+" name="bt" style="width:100%" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
