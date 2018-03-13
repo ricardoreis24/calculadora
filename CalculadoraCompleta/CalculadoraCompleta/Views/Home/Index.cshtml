@@ -9,23 +9,27 @@
 <head>
 	<meta name="viewport" content="width=device-width" />
 	<title>Calculadora</title>
-	<style>
-		body {
-			background: #1a1a1c;
-		}
+    <style>
+        #visor {
+            text-align: right;
+            font-size: 18px;
+        }
+         body {
+             background: #1a1a1c;
+         }
 
-		#tabela {
-			border: 2px solid white;
-			width: 20%;
-			border-spacing: 10px;
-		}
+        #tabela {
+            border: 2px solid white;
+            width: 20%;
+            border-spacing: 10px;
+        }
 
-		h1 {
-			font-size: 25px;
-			font-family: Verdana;
-			color: white;
-		}
-	</style>
+        h1 {
+            font-size: 25px;
+            font-family: Verdana;
+            color: white;
+        }
+    </style>
 	<script>
 	</script>
 </head>
@@ -42,7 +46,7 @@
 			<table id="tabela">
 				<tr>
 					<td colspan="5" align='center'>
-						<input type="text" name="visor" value="@ViewBag.Visor" style="width:100%" text-align="right" ; readonly />
+						<input type="text" name="visor" id="visor" value="@ViewBag.Visor" style="width:100%" text-align="right" ; readonly />
 					</td>
 				</tr>
 				<tr>

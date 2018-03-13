@@ -11,10 +11,11 @@ namespace CalculadoraCompleta.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //inicalizar dados para a view
-            ViewBag.Visor = 0;
+            //inicalizar dados para aparecerem no ecra
+            ViewBag.Visor = "0";
             //Variaveis
             Session["operador"] = "";
+            //verificar estado do ecra limpo/não limpo para saber se a conta acabou
             Session["limpaVisor"] = true;
             return View();
         }
@@ -24,7 +25,7 @@ namespace CalculadoraCompleta.Controllers
         public ActionResult Index(string bt, string visor)
         {
             switch (bt)
-            {
+            {   //determinar a ação
                 case "0":
                 case "1":
                 case "2":
@@ -35,11 +36,14 @@ namespace CalculadoraCompleta.Controllers
                 case "7":
                 case "8":
                 case "9":
-                    if (visor.Equals("0") || (bool)Session["limpaVisor"])
+                    //recuperar resultado da decisão sobre limpeza do visor
+                    bool limpaEcra = (bool) Session["limpaVisor"];
+                    //processa a escrita do visor
+                    if (limpaEcra || visor.Equals("0") )
                     {
                         visor = bt;
+                        //marcar o visor para continuar a escrita do operando
                         Session["limpaVisor"] = false;
-
                     }
                     else
 
@@ -67,9 +71,12 @@ namespace CalculadoraCompleta.Controllers
                 case "-":
                 case "x":
                 case ":":
-                    // já alguém carregou num operador?
+                    //session = variavel de sessão (viewBag Especial vá)
+                    // verifica se já houve um botão carregado
                     string auxOperador = (string)Session["operador"];
-                    // se sim...
+                    // se já foi carregado
+                    //esta condição verifica se o auxOperador é diferente de vazio
+                    //se nunca carregarmos no botão a string fica vazia
                     if (!auxOperador.Equals(""))
                     {
                         //realizar calculos
@@ -97,16 +104,16 @@ namespace CalculadoraCompleta.Controllers
                     Session["operador"] = bt;
                     // guardar o valor do visor
                     Session["operando"] = visor;
-                    // marcar o visor para limpeza
+                    // garantir que esta limpo
                     Session["limpaVisor"] = true;
                     break;
                 case "=":
-                    // já alguém carregou num operador?
+                    // verificar se ja carregaram num operador
                     auxOperador = (string)Session["operador"];
-                    // se sim...
+                    // caso tenha sido carregado
                     if (!auxOperador.Equals(""))
                     {
-                        // ...vamos realizar os cálculos
+                        // realizam dos calculos
                         double auxOperando1 = Convert.ToDouble(Session["operando"]);
                         double auxOperando2 = Convert.ToDouble(visor);
                         switch (auxOperador)
@@ -125,13 +132,12 @@ namespace CalculadoraCompleta.Controllers
                                 break;
                         }
                     }
-                    // independentemente de ser a primeira vez que se carrega num operador,
-                    // ou não, há que guardar estes valores para memória futura
+                    // mesmo que seja a primeira vez carregada temos que guardar o valor porque pode ser preciso
                     // fazer reset ao valor do operador
                     Session["operador"] = "";
-                    // guardar o valor do visor
+                    // guardar valor no visor
                     Session["operando"] = visor;
-                    // marcar o visor para limpeza
+                    // fazer limpeza
                     Session["limpaVisor"] = true;
                     break;
             }
